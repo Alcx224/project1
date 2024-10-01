@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:store/ui/pages/storePage.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -80,9 +82,11 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        onPressed: () {
+          Get.to(() => StorePage());
+        },
+        tooltip: 'Tienda',
+        child: const Icon(Icons.shop),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }

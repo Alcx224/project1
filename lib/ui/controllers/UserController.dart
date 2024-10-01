@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
-import 'package:store/ui/controllers/InventoryModel.dart';
-import 'package:store/ui/controllers/IventoryController.dart';
+
+import 'InventoryModel.dart';
+import 'IventoryController.dart';
 
 class UserController extends GetxController {
   var userCoins = 100.0.obs; // Saldo inicial de monedas del usuario (100)

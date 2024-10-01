@@ -1,10 +1,10 @@
 // views/store_page.dart
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:store/ui/controllers/UserController.dart';
-import 'package:store/ui/controllers/product.dart';
-import 'package:store/ui/pages/InventoryPage.dart';
-import 'package:store/ui/wigets/item.dart';
+import '../controllers/UserController.dart';
+import '../controllers/product.dart';
+import '../widgets/item.dart';
+import 'InventoryPage.dart';
 
 class StorePage extends StatelessWidget {
   final ProductController productController = Get.put(ProductController());

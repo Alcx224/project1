@@ -1,9 +1,10 @@
 // views/product_card.dart
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:store/ui/controllers/InventoryModel.dart';
-import 'package:store/ui/controllers/UserController.dart';
-import 'package:store/ui/controllers/product_model.dart';
+
+import '../controllers/InventoryModel.dart';
+import '../controllers/UserController.dart';
+import '../controllers/product_model.dart';
 
 class ProductCard extends StatelessWidget {
   final Product product;

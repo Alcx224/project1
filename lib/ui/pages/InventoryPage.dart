@@ -1,7 +1,8 @@
 // views/inventory_page.dart
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:store/ui/controllers/IventoryController.dart';
+
+import '../controllers/IventoryController.dart';
 
 class InventoryPage extends StatelessWidget {
   final InventoryController inventoryController = Get.find();
