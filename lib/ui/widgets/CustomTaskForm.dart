@@ -98,7 +98,9 @@ class _CustomTaskFormState extends State<CustomTaskForm> {
                 if (_formKey.currentState!.validate()) {
                   // Crear la tarea personalizada
                   _addCustomTask();
-                  Get.back(); // Cerrar el formulario
+                  Get.back();
+                  Get.back();
+                  // Cerrar el formulario
                 }
               },
               child: Text('Agregar Tarea'),

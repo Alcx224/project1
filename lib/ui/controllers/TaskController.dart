@@ -17,6 +17,16 @@ class TaskController extends GetxController {
     tasks.remove(task);
   }
 
+  void clearTasks() {
+    for (var task in tasks) {
+      task.isCompleted = false;
+      if (task.type == TaskType.quantitative) {
+        task.currentValue = 0; // Reiniciar el progreso si es cuantitativa
+      }
+    }
+    tasks.clear(); // Vaciar la lista después de reiniciar las tareas
+  }
+
   void toggleTaskCompletion(Task task) {
     // Hacer "uncheck" si ya está completada, de lo contrario completarla
     if (task.isCompleted) {
