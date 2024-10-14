@@ -3,9 +3,9 @@ import 'package:get/get.dart';
 import 'package:store/ui/pages/login_page.dart';
 
 import 'ui/controllers/TaskBankController.dart';
+import 'ui/controllers/TaskCompletedController.dart';
 import 'ui/controllers/TaskController.dart';
 import 'ui/pages/home_page.dart';
-//import 'package:store/ui/pages/storePage.dart';
 
 void main() {
   runApp(MyApp());
@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
     'admin': '1234' // Usuario predefinido
   };
 
+    Get.put(CompleteTaskController());
 
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
