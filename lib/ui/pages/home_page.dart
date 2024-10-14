@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../controllers/TaskCompletedController.dart';
 import '../controllers/TaskController.dart';
 import '../controllers/TaskModel.dart';
+import '../widgets/NavBar.dart';
 import '../widgets/ProgressBar.dart';
 import '../widgets/TaskCard1.dart';
 import '../widgets/TaskCard2.dart';
@@ -9,6 +11,8 @@ import 'TaskBankPage.dart';
 
 class TaskListPage extends StatelessWidget {
   final TaskController taskController = Get.find();
+  final CompleteTaskController completeTaskController =
+      Get.find(); // Obtener instancia del controlador de tareas completadas
 
   @override
   Widget build(BuildContext context) {
@@ -54,9 +58,49 @@ class TaskListPage extends StatelessWidget {
           ),
           // Barra de progreso de tareas en la parte inferior
           ProgressBar(),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                // Botón para guardar
+                ElevatedButton(
+                  onPressed: () {
+                    _saveTasks(); // Llamada para guardar tareas completadas
+                    taskController.clearTasks();
+                  },
+                  child: Text("Guardar Tareas"),
+                ),
+              ],
+            ),
+          ),
+          BottomNavBar(),
         ],
       ),
     );
+  }
+
+  // Método para guardar las tareas completadas en el CompleteTaskController
+  void _saveTasks() {
+    DateTime selectedDate = completeTaskController
+        .simulatedDate.value; // Obtener la fecha seleccionada
+    for (var task in taskController.tasks) {
+      int progress;
+
+      if (task.type == TaskType.simple) {
+        // Para tareas únicas, se considera completada si está marcada como tal
+        progress = task.isCompleted ? 100 : 0;
+      } else if (task.type == TaskType.quantitative) {
+        // Para tareas cuantitativas, calcular el progreso promedio
+        progress = ((task.currentValue / task.target) * 100).toInt();
+      } else {
+        progress = 0; // Si no es única ni cuantitativa, progreso es 0
+      }
+
+      // Guardar la tarea con el progreso en el controlador de tareas completadas
+      completeTaskController.completeTask(task.name, selectedDate, progress);
+    }
+    Get.snackbar("Éxito", "Tareas guardadas correctamente");
   }
 
   // Mostrar confirmación antes de vaciar la lista
