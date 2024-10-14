@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:store/ui/pages/login_page.dart';
 
 import 'ui/controllers/TaskBankController.dart';
 import 'ui/controllers/TaskController.dart';
@@ -16,11 +17,15 @@ class MyApp extends StatelessWidget {
     // Inicializar los controladores cuando la aplicación comience
     Get.put(TaskController());
     Get.put(TaskBankController());
+    final Map<String, String> users = {
+    'admin': '1234' // Usuario predefinido
+  };
+
 
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Lista de Tareas',
-      home: TaskListPage(),
+      title: 'Mi mejor ser',
+      home: LoginPage(users: users),
     );
   }
 }
