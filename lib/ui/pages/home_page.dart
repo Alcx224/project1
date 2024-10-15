@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import '../controllers/TaskCompletedController.dart';
 import '../controllers/TaskController.dart';
 import '../controllers/TaskModel.dart';
+import '../controllers/UserController.dart'; // Asegúrate de importar el UserController
 import '../widgets/NavBar.dart';
 import '../widgets/ProgressBar.dart';
 import '../widgets/TaskCard1.dart';
@@ -11,8 +12,9 @@ import 'TaskBankPage.dart';
 
 class TaskListPage extends StatelessWidget {
   final TaskController taskController = Get.find();
-  final CompleteTaskController completeTaskController =
-      Get.find(); // Obtener instancia del controlador de tareas completadas
+  final CompleteTaskController completeTaskController = Get.find();
+  final UserController userController =
+      Get.find(); // Obtener instancia del controlador de usuario
 
   @override
   Widget build(BuildContext context) {
@@ -84,12 +86,17 @@ class TaskListPage extends StatelessWidget {
   void _saveTasks() {
     DateTime selectedDate = completeTaskController
         .simulatedDate.value; // Obtener la fecha seleccionada
+    int completedTasksCount = 0; // Contador de tareas completadas
+
     for (var task in taskController.tasks) {
       int progress;
 
       if (task.type == TaskType.simple) {
         // Para tareas únicas, se considera completada si está marcada como tal
         progress = task.isCompleted ? 100 : 0;
+        if (task.isCompleted) {
+          completedTasksCount++; // Incrementar el contador si la tarea está completada
+        }
       } else if (task.type == TaskType.quantitative) {
         // Para tareas cuantitativas, calcular el progreso promedio
         progress = ((task.currentValue / task.target) * 100).toInt();
@@ -100,7 +107,13 @@ class TaskListPage extends StatelessWidget {
       // Guardar la tarea con el progreso en el controlador de tareas completadas
       completeTaskController.completeTask(task.name, selectedDate, progress);
     }
-    Get.snackbar("Éxito", "Tareas guardadas correctamente");
+
+    // Agregar monedas por cada tarea completada
+    userController.userCoins.value += completedTasksCount *
+        10; // Agregar 10 monedas por cada tarea completada
+
+    Get.snackbar(
+        "Éxito", "$completedTasksCount tareas guardadas y monedas agregadas.");
   }
 
   // Mostrar confirmación antes de vaciar la lista

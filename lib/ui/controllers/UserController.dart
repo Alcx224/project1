@@ -15,6 +15,11 @@ class UserController extends GetxController {
     }
   }
 
+  // Método para agregar monedas
+  void addCoins() {
+    userCoins.value += 10; // Aumenta las monedas en 10
+  }
+
   // Método para verificar si el usuario tiene suficientes monedas
   bool hasEnoughCoins(double amount) {
     return userCoins.value >= amount;

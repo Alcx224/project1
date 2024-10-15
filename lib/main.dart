@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:store/ui/controllers/UserController.dart';
 import 'package:store/ui/pages/login_page.dart';
 
 import 'ui/controllers/TaskBankController.dart';
 import 'ui/controllers/TaskCompletedController.dart';
 import 'ui/controllers/TaskController.dart';
-import 'ui/pages/home_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,9 +17,10 @@ class MyApp extends StatelessWidget {
     // Inicializar los controladores cuando la aplicación comience
     Get.put(TaskController());
     Get.put(TaskBankController());
+    Get.put(UserController());
     final Map<String, String> users = {
-    'admin': '1234' // Usuario predefinido
-  };
+      'admin': '1234' // Usuario predefinido
+    };
 
     Get.put(CompleteTaskController());
 

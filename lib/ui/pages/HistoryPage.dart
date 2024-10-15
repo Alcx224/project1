@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import '../controllers/TaskController.dart';
 import '../widgets/Calendar.dart';
 import '../widgets/DaySimulatorWidget.dart';
 import '../widgets/NavBar.dart';
