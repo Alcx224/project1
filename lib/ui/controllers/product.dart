@@ -1,7 +1,7 @@
 // controllers/product_controller.dart
 import 'package:get/get.dart';
 
-import 'product_model.dart';
+import '../../data/models/product_model.dart';
 
 class ProductController extends GetxController {
   // Lista observable de productos

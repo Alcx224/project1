@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import 'InventoryModel.dart';
+import '../../data/models/InventoryModel.dart';
 
 class InventoryController extends GetxController {
   var items = <InventoryItem>[].obs;

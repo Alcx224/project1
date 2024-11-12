@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'TaskModel.dart';
+import '../../data/models/TaskModel.dart';
 
 class TaskController extends GetxController {
   var tasks = <Task>[].obs;

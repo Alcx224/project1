@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../controllers/TaskCompletedController.dart';
 import '../controllers/TaskController.dart';
-import '../controllers/TaskModel.dart';
+import '../../data/models/TaskModel.dart';
 import '../controllers/UserController.dart'; // Asegúrate de importar el UserController
 import '../widgets/NavBar.dart';
 import '../widgets/ProgressBar.dart';

@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 import '../controllers/TaskBankController.dart';
 import '../controllers/TaskController.dart';
-import '../controllers/TaskModel.dart';
+import '../../data/models/TaskModel.dart';
 import '../widgets/CustomTaskForm.dart';
 
 class TaskBankPage extends StatelessWidget {

@@ -25,6 +25,11 @@ environment:
 
 dependencies:
   table_calendar: ^3.0.0
+  sqflite: ^2.3.3+2
+  loggy: ^2.0.3
+  path_provider: ^2.1.4
+  hive: any
+  hive_flutter: ^1.1.0
   flutter:
     sdk: flutter
   get:
@@ -35,6 +40,8 @@ dependencies:
   cupertino_icons: ^1.0.2
 
 dev_dependencies:
+  hive_generator: ^2.0.1
+  build_runner: ^2.4.13
   flutter_test:
     sdk: flutter
 

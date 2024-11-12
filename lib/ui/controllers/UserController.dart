@@ -1,9 +1,19 @@
 import 'package:get/get.dart';
+import 'package:hive/hive.dart';
 
-import 'InventoryModel.dart';
+import '../../data/models/InventoryModel.dart';
+import '../../data/models/user_model.dart';
 import 'IventoryController.dart';
 
 class UserController extends GetxController {
+  final Box<User> _userBox = Hive.box<User>('users');
+
+  void registerUser(String username, String email, String password) {
+    final user = User(username: username, email: email, password: password);
+    _userBox.add(user); // Guarda el nuevo usuario en la caja de usuarios
+    Get.snackbar("Registro Exitoso", "Usuario registrado correctamente.");
+  }
+
   var userCoins = 100.0.obs; // Saldo inicial de monedas del usuario (100)
   final InventoryController inventoryController =
       Get.put(InventoryController());

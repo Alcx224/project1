@@ -2,9 +2,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../controllers/InventoryModel.dart';
+import '../../data/models/InventoryModel.dart';
 import '../controllers/UserController.dart';
-import '../controllers/product_model.dart';
+import '../../data/models/product_model.dart';
 
 class ProductCard extends StatelessWidget {
   final Product product;
